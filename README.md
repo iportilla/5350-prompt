@@ -10,6 +10,7 @@ Week 8 class exercise for STAT / APPM 5350 (Applied AI): a hands-on prompt engin
 | [`Week8_Prompt_Engineering_Lab.ipynb`](Week8_Prompt_Engineering_Lab.ipynb) | Student notebook: Parts 0–10 with TODOs and reflection prompts |
 | [`Week8_Prompt_Engineering_Lab_SOLUTIONS.ipynb`](Week8_Prompt_Engineering_Lab_SOLUTIONS.ipynb) | Instructor solutions, model answers, grading notes, and the 100-point rubric |
 | [`Week8_Rubric_Handout.html`](Week8_Rubric_Handout.html) | Student-facing grading rubric (open in a browser; prints cleanly) |
+| [Walkthrough slides](https://claude.ai/artifact/9ggAeq1f8x9tJt5WBCbUMS) | 19-slide class walkthrough that follows the notebook part by part |
 
 ## What the lab covers
 
