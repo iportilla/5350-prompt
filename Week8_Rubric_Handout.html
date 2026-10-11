@@ -1,0 +1,297 @@
+<title>Week 8 Prompt Lab Rubric</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: single reading column; a weight bar summarizes the 100 points, then one block per part, then deductions and the submission checklist. */
+:root {
+  --paper: #fbfcfd;
+  --ink: #18212b;
+  --muted: #56616e;
+  --rule: #d9dee5;
+  --panel: #f0f3f7;
+  --accent: #1f4fbf;
+  --accent-soft: #e3eafb;
+  --warn: #a8361f;
+  --warn-soft: #fbe9e4;
+  --seg-a: #1f4fbf;
+  --seg-b: #6d8fdc;
+  --font-display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12171e; --ink: #e6eaf0; --muted: #9aa5b3; --rule: #2b3440; --panel: #1a212b;
+    --accent: #8fb0ff; --accent-soft: #1d2a45; --warn: #ff9a80; --warn-soft: #3a211b;
+    --seg-a: #6f97ff; --seg-b: #3c5a9e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12171e; --ink: #e6eaf0; --muted: #9aa5b3; --rule: #2b3440; --panel: #1a212b;
+  --accent: #8fb0ff; --accent-soft: #1d2a45; --warn: #ff9a80; --warn-soft: #3a211b;
+  --seg-a: #6f97ff; --seg-b: #3c5a9e; color-scheme: dark;
+}
+
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 64px; display: grid; gap: 36px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.15; }
+h2 { font-size: 22px; }
+h3 { font-size: 17px; }
+p { margin: 0; }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--panel); padding: 1px 5px; border-radius: 3px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+header { display: grid; gap: 12px; border-bottom: 2px solid var(--ink); padding-bottom: 20px; }
+header .lede { color: var(--muted); max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; }
+.meta b { font-weight: 600; }
+
+/* weight bar */
+.weights { display: grid; gap: 10px; }
+.bar { display: flex; height: 34px; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); }
+.bar span { display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; color: #fff; min-width: 0; font-variant-numeric: tabular-nums; }
+.bar span:nth-child(odd) { background: var(--seg-a); }
+.bar span:nth-child(even) { background: var(--seg-b); }
+.legend { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 4px 20px; font-size: 13.5px; }
+.legend div { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px dotted var(--rule); padding-block: 3px; }
+.legend .pts { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--muted); }
+
+.principle { background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 0 4px 4px 0; display: grid; gap: 6px; }
+.principle p { max-width: 70ch; }
+
+/* parts */
+.parts { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.part { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding-block: 20px; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+.num { font-family: var(--font-display); font-size: 30px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.body { display: grid; gap: 10px; min-width: 0; }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.pill { font-family: var(--font-mono); font-size: 13px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.crit { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.crit li { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: baseline; }
+.crit li .p { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lose { font-size: 14px; color: var(--muted); }
+.lose b { color: var(--warn); font-weight: 600; }
+.cap { background: var(--warn-soft); color: var(--ink); border-radius: 4px; padding: 8px 12px; font-size: 14px; }
+.cap b { color: var(--warn); }
+
+/* deductions + checklist */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+.two > section { display: grid; gap: 12px; align-content: start; min-width: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+td { padding: 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.v { font-family: var(--font-mono); color: var(--warn); text-align: right; white-space: nowrap; padding-left: 12px; font-variant-numeric: tabular-nums; }
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
+.check li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; }
+.check li::before { content: ""; width: 14px; height: 14px; border: 1.5px solid var(--ink); border-radius: 2px; margin-top: 3px; }
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+
+@media (max-width: 520px) {
+  .part { grid-template-columns: 1fr; gap: 6px; }
+  .num { font-size: 24px; }
+}
+@media print {
+  :root { --paper: #fff; --ink: #000; --muted: #444; --panel: #f2f2f2; color-scheme: light; }
+  .wrap { padding-block: 0; gap: 22px; }
+  .bar span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">STAT / APPM 5350 · Applied AI · Week 8</div>
+    <h1>Prompt Engineering Lab: Grading Rubric</h1>
+    <p class="lede">How the Week 8 class exercise notebook is scored. Use it as a checklist while you work: each part lists what full credit looks like and the most common ways to lose points.</p>
+    <div class="meta">
+      <span><b>Total:</b> 100 points</span>
+      <span><b>Format:</b> pairs</span>
+      <span><b>Due:</b> as posted on the course site</span>
+    </div>
+  </header>
+
+  <section class="weights" aria-label="Point distribution">
+    <h2>Where the points are</h2>
+    <div class="bar" role="img" aria-label="Points by part: 10, 12, 8, 10, 4, 12, 8, 8, 20, 8">
+      <span style="flex:10">1</span><span style="flex:12">2</span><span style="flex:8">3</span><span style="flex:10">4</span><span style="flex:4">5</span><span style="flex:12">6</span><span style="flex:8">7</span><span style="flex:8">8</span><span style="flex:20">9</span><span style="flex:8">10</span>
+    </div>
+    <div class="legend">
+      <div><span>1 · Prompt anatomy</span><span class="pts">10</span></div>
+      <div><span>2 · Zero-shot vs few-shot</span><span class="pts">12</span></div>
+      <div><span>3 · Model parameters</span><span class="pts">8</span></div>
+      <div><span>4 · Hallucinations</span><span class="pts">10</span></div>
+      <div><span>5 · Role-based prompting</span><span class="pts">4</span></div>
+      <div><span>6 · Reasoning strategies</span><span class="pts">12</span></div>
+      <div><span>7 · Chaining &amp; chunking</span><span class="pts">8</span></div>
+      <div><span>8 · Embeddings</span><span class="pts">8</span></div>
+      <div><span>9 · Capstone: Lost &amp; Found</span><span class="pts">20</span></div>
+      <div><span>10 · Template &amp; wrap-up</span><span class="pts">8</span></div>
+    </div>
+  </section>
+
+  <div class="principle">
+    <h3>We grade the process and the reasoning, not the model's numbers</h3>
+    <p>Results vary by provider and model, so a lower accuracy will not cost you points if you measured it correctly and explained it. Reflections should cite numbers from <em>your own runs</em>. Answers that could have been written without running the notebook earn little credit.</p>
+  </div>
+
+  <section style="display:grid;gap:12px">
+    <h2>Criteria by part</h2>
+    <div class="parts">
+
+      <article class="part">
+        <div class="num">1</div>
+        <div class="body">
+          <div class="head"><h3>Prompt anatomy</h3><span class="pill">10 pts</span></div>
+          <ul class="crit">
+            <li><span>Prompt versions v1 → v3 each run and logged under their own tag. v3 contains a role, constraints, and an explicit JSON schema, and its schema check is reported.</span><span class="p">4</span></li>
+            <li><span>Robustness check run (5 runs at temperature 0.7) with the pass rate reported.</span><span class="p">2</span></li>
+            <li><span>Reflection names the change with the largest effect and a <em>concrete mechanism</em> that would fix the remaining failures.</span><span class="p">4</span></li>
+          </ul>
+          <p class="lose"><b>Common deductions:</b> skipping a version, v3 output that doesn't parse, or "make the prompt clearer" as the fix.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">2</div>
+        <div class="body">
+          <div class="head"><h3>Zero-shot vs few-shot</h3><span class="pill">12 pts</span></div>
+          <ul class="crit">
+            <li><span>Few-shot job-title prompt with 3–4 examples that cover a <code>none</code> case, title-only output, and the <code>Name | Title | Company</code> format.</span><span class="p">5</span></li>
+            <li><span>Multi-label genre prompt restricted to the given label set, with mean Jaccard reported.</span><span class="p">4</span></li>
+            <li><span>Reflection separates accuracy from format consistency, discusses the hardest item, and addresses what an 8-item test set can and can't tell you.</span><span class="p">3</span></li>
+          </ul>
+          <p class="cap"><b>Cap:</b> using any test sentence as a few-shot example is test-set leakage. The part is then capped at 5 / 12.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">3</div>
+        <div class="body">
+          <div class="head"><h3>Model parameters</h3><span class="pill">8 pts</span></div>
+          <ul class="crit">
+            <li><span>Temperature diversity table and plot produced.</span><span class="p">2</span></li>
+            <li><span><code>max_tokens</code> sweep run, with truncation identified from <code>finish_reason</code>.</span><span class="p">2</span></li>
+            <li><span>Length controlled through the prompt at <code>max_tokens=20</code>, finishing with <code>stop</code>.</span><span class="p">2</span></li>
+            <li><span>Reflection picks a temperature for each use case and explains why <code>max_tokens</code> is a poor length control.</span><span class="p">2</span></li>
+          </ul>
+          <p class="lose"><b>Common deduction:</b> "fixing" length by raising <code>max_tokens</code>.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">4</div>
+        <div class="body">
+          <div class="head"><h3>Hallucinations &amp; guardrails</h3><span class="pill">10 pts</span></div>
+          <ul class="crit">
+            <li><span>Guarded prompt that answers only from the passage, replies with the exact string <code>NOT IN CONTEXT</code> when it can't, and quotes its evidence when it can.</span><span class="p">5</span></li>
+            <li><span>Both prompts scored for abstention. The guarded prompt reaches at least 4 / 5.</span><span class="p">2</span></li>
+            <li><span>Reflection quotes a specific hallucination from your run and proposes at least one safeguard beyond prompting.</span><span class="p">3</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">5</div>
+        <div class="body">
+          <div class="head"><h3>Role-based prompting</h3><span class="pill">4 pts</span></div>
+          <ul class="crit">
+            <li><span>A fourth role of your own added and run.</span><span class="p">2</span></li>
+            <li><span>Reflection contrasts the roles with specific points from the outputs and proposes how to combine them.</span><span class="p">2</span></li>
+          </ul>
+          <p class="lose"><b>Common deduction:</b> "the tone was different" with no specifics.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">6</div>
+        <div class="body">
+          <div class="head"><h3>Reasoning strategies</h3><span class="pill">12 pts</span></div>
+          <ul class="crit">
+            <li><span>Two-stage answer extraction implemented.</span><span class="p">3</span></li>
+            <li><span>Selection-inference implemented: decompose, answer the sub-question, then answer with the new fact in context.</span><span class="p">4</span></li>
+            <li><span>All four strategies compared on accuracy <em>and</em> calls per question.</span><span class="p">2</span></li>
+            <li><span>Reflection classifies the errors (interpretation vs arithmetic) and weighs the extra cost.</span><span class="p">3</span></li>
+          </ul>
+          <p class="lose"><b>Common deduction:</b> strategies C and D must be <em>separate calls</em> that pass context forward. A single prompt imitating them loses 2 points each.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">7</div>
+        <div class="body">
+          <div class="head"><h3>Chaining &amp; chunking</h3><span class="pill">8 pts</span></div>
+          <ul class="crit">
+            <li><span>Entity → summary → sentiment chain runs end to end with JSON intermediates.</span><span class="p">2</span></li>
+            <li><span><code>map_reduce_summary</code> implemented: summarize each chunk, then merge into a final summary with a <code>Topic:</code> line.</span><span class="p">4</span></li>
+            <li><span>Bonus question answered: why split on sentence boundaries, and why overlap helps.</span><span class="p">2</span></li>
+          </ul>
+          <p class="lose"><b>Common deduction:</b> a reduce step that just concatenates the chunk summaries.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">8</div>
+        <div class="body">
+          <div class="head"><h3>Embeddings</h3><span class="pill">8 pts</span></div>
+          <ul class="crit">
+            <li><span>Nearest-label zero-shot classifier implemented, with accuracy reported.</span><span class="p">4</span></li>
+            <li><span>Richer label descriptions tried and compared with the originals.</span><span class="p">2</span></li>
+            <li><span>Reflection weighs embeddings against LLM prompting on cost, latency, and adaptability. If you used the TF-IDF fallback, explain its limits.</span><span class="p">2</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">9</div>
+        <div class="body">
+          <div class="head"><h3>Capstone: Lost &amp; Found matching</h3><span class="pill">20 pts</span></div>
+          <ul class="crit">
+            <li><span>Retrieval-only baseline reported.</span><span class="p">2</span></li>
+            <li><span>Normalization prompt with a fixed schema that invents no details and keeps personal identifiers out. Recall@k compared against the baseline.</span><span class="p">5</span></li>
+            <li><span>Rerank prompt that rules out candidates conflicting on hard attributes and can answer <code>NO_MATCH</code>.</span><span class="p">5</span></li>
+            <li><span>Results table complete, including LLM call counts.</span><span class="p">3</span></li>
+            <li><span>Memo (≤ 200 words) covers the staff workflow and human role, the 50% goal, scale and cost, PII handling, and keeping the vector index up to date.</span><span class="p">5</span></li>
+          </ul>
+          <p class="lose"><b>Results credit:</b> ≥ 9 / 12 correct with no false matches earns full credit. 7–8 correct costs 2 points. Matching <code>L12</code> to any item costs 2 points.</p>
+        </div>
+      </article>
+
+      <article class="part">
+        <div class="num">10</div>
+        <div class="body">
+          <div class="head"><h3>Prompt template &amp; wrap-up</h3><span class="pill">8 pts</span></div>
+          <ul class="crit">
+            <li><span>Template includes a role, inputs, an output schema, at least two real safety rules, and filled-in evaluation numbers.</span><span class="p">4</span></li>
+            <li><span><code>prompt_log.csv</code> exported.</span><span class="p">1</span></li>
+            <li><span>Final reflection answers all three questions using evidence from your own results.</span><span class="p">3</span></li>
+          </ul>
+          <p class="lose"><b>Common deduction:</b> leaving the template's <code>eval</code> fields as <code>null</code>.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="two">
+    <section>
+      <h2>Deductions</h2>
+      <table>
+        <tr><td>API key pasted anywhere in the notebook. Rotate the key immediately.</td><td class="v">−5</td></tr>
+        <tr><td>Notebook submitted unrun, or with cells that error.</td><td class="v">−5</td></tr>
+        <tr><td>Reflection that cites no numbers from your own runs, per reflection.</td><td class="v">−1 each, max −5</td></tr>
+      </table>
+    </section>
+    <section>
+      <h2>Submit</h2>
+      <ul class="check">
+        <li><span>The notebook, fully run with outputs, with every ✏️ TODO done and every 💭 reflection answered</span></li>
+        <li><span><code>prompt_log.csv</code>, your experiment record</span></li>
+        <li><span><code>prompt_template_lost_found.json</code>, your saved template</span></li>
+        <li><span>Capstone results table and memo, inside the notebook (Part 9.4)</span></li>
+        <li><span>Both partners' names in the first cell</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>Week 8 · Prompt Engineering Lab · Next week: Prompting → RAG → Agents → Deployment</footer>
+</div>

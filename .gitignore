@@ -1,0 +1,6 @@
+.env
+.ipynb_checkpoints/
+__pycache__/
+prompt_log.csv
+prompt_template_lost_found.json
+.DS_Store
