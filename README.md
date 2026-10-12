@@ -10,6 +10,7 @@ Week 8 class exercise for STAT / APPM 5350 (Applied AI): a hands-on prompt engin
 | [`Week8_Prompt_Engineering_Lab.ipynb`](Week8_Prompt_Engineering_Lab.ipynb) | Student notebook: Parts 0–10 with TODOs and reflection prompts |
 | [`Week8_Prompt_Engineering_Lab_SOLUTIONS.ipynb`](Week8_Prompt_Engineering_Lab_SOLUTIONS.ipynb) | Instructor solutions, model answers, grading notes, and the 100-point rubric |
 | [`Week8_Rubric_Handout.html`](Week8_Rubric_Handout.html) | Student-facing grading rubric (open in a browser; prints cleanly) |
+| [`env.sample`](env.sample) | Template for `.env`: provider choice, API keys and model settings |
 | [Walkthrough slides](https://claude.ai/artifact/9ggAeq1f8x9tJt5WBCbUMS) | 19-slide class walkthrough that follows the notebook part by part |
 
 ## What the lab covers
@@ -30,7 +31,20 @@ Week 8 class exercise for STAT / APPM 5350 (Applied AI): a hands-on prompt engin
 
 ## Running it
 
-Pick one provider and set environment variables **before** launching Jupyter. Never paste API keys into the notebook.
+Pick one provider and give the notebook its settings. Never paste API keys into the notebook.
+
+The easiest way is a `.env` file, which the notebook loads with `python-dotenv`:
+
+```bash
+cp env.sample .env
+```
+
+Then open `.env`, set `LLM_PROVIDER`, and uncomment and fill in the lines for that provider only.
+[`env.sample`](env.sample) explains where to find each key and value. Leave the optional lines commented out to use
+their defaults: a blank value such as `OPENAI_MODEL=` replaces the default with an empty string.
+Restart the Jupyter kernel after editing `.env`. `.env` is in `.gitignore`, so keys stay out of version control.
+
+You can also set the same variables in your shell before launching Jupyter; shell variables take precedence over `.env`.
 
 | `LLM_PROVIDER` | Required variables | Install |
 |---|---|---|
@@ -42,6 +56,9 @@ Pick one provider and set environment variables **before** launching Jupyter. Ne
 Other dependencies: `pandas numpy scikit-learn matplotlib python-dotenv`.
 
 Without an embedding model, Part 8 and the capstone fall back to TF-IDF vectors.
+
+For Azure, `AZURE_OPENAI_ENDPOINT` is the resource address, `https://<resource>.openai.azure.com/`. If you paste the
+`.../openai/v1` URL that the Azure portal may show, the notebook trims it to the resource address for you.
 
 ## Submission
 
